@@ -1,7 +1,8 @@
 {- stack script --resolver lts-18.18 -}
 import System.Environment
+import Data.List
 
-solve xs lag = sum $ zipWith (\a b -> if a > b then 1 else 0) (drop lag xs) xs
+solve xs lag = genericLength . filter id  $ zipWith (>) (drop lag xs) xs
 
 main = do
     args <- getArgs
