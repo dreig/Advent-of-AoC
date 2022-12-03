@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 from sys import stdin
-import string
 data = [line.strip() for line in stdin.readlines()]
 
+from string import ascii_letters as letters
+
 def get_score(el):
-    return string.ascii_letters.index(el)+1
+    return letters.index(el) + 1
 
 def p1(data):
     res = 0
