@@ -4,10 +4,7 @@ import string
 data = [line.strip() for line in stdin.readlines()]
 
 def get_score(el):
-    if el in string.ascii_lowercase:
-        return string.ascii_lowercase.index(el)+1
-    else:
-        return string.ascii_uppercase.index(el)+27
+    return string.ascii_letters.index(el)+1
 
 def p1(data):
     res = 0
@@ -23,8 +20,8 @@ def p1(data):
 
 def p2(data):
     res = 0
-    for group in zip(data[::3], data[1::3], data[2::3]):
-        a,b,c = map(set, group)
+    for i in range(0, len(data), 3):
+        a,b,c = map(set, data[i:i+3])
 
         el = list(a & b & c)[0]
         res += get_score(el)
