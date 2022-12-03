@@ -16,19 +16,17 @@ def p1(data):
         left = set(line[:l])
         right = set(line[l:])
 
-        el = list(left.intersection(right))[0]
+        el = list(left & right)[0]
         res += get_score(el)
 
     return res
 
 def p2(data):
-    n = len(data)
-
     res = 0
-    for i in range(0, n, 3):
-        a,b,c = map(set, data[i:i+3])
+    for group in zip(data[::3], data[1::3], data[2::3]):
+        a,b,c = map(set, group)
 
-        el = list(a.intersection(b).intersection(c))[0]
+        el = list(a & b & c)[0]
         res += get_score(el)
 
     return res
